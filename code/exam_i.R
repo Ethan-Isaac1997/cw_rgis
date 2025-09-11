@@ -15,10 +15,13 @@ mtcars_cyl6 <- mtcars %>% filter(cyl == 6)
 # 2. Filter rows where number of gears (`gear`) is either 3 or 5
 # Use `%in%` to filter the `df_mtcars` dataset for these two `gear` values.
 # Assign to: `mtcars_g35`
-mtcars_g35 <- mtcars %>% filter(gear == 3, gear == 5)
+
+mtcars_g35 <- filter(df_mtcars, gear %in% c(3, 5))
+mtcars_g35
 # 3. Filter rows where miles per gallon (`mpg`) is greater than 25
 # Create a subset of `df_mtcars` where `mpg > 25`.
 # Assign to: `mtcars_mpg25`
+
 mtcars_mpg25 <- mtcars %>% filter(mpg > 25)
 # 4. Filter rows where weight (`wt`) is less than 2.5 AND number of cylinders (`cyl`) is 4
 # Combine logical conditions using `&`.
@@ -61,7 +64,7 @@ mtcars_with_ptw <- mtcars %>% mutate(ptw = hp / wt)
 # Function `max()` returns the maximum value in a vector.
 # Assign to: `mtcars_mpg_by_gear`
  
- mtcars_mpg_by_gear <- mtcars %>% group_by(gear) %>% summarise(max.mpg = max(mpg))
+ mtcars_mpg_by_gear <- mtcars %>% group_by(gear) %>% summarise(max.mpg = max(mpg), (min.mpg = min(mpg)))
  mtcars_mpg_by_gear
 # ggplot ------------------------------------------------------------------
 
@@ -102,6 +105,5 @@ g_scat <- ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) 
  # Assign to: `g_bplot2`
  # Create a boxplot of `weight` by `group`, then overlay points showing individual observations.
  
-g_bplot2 <- PlantGrowth %>% ggplot(aes(x = group, y = weight, fill = group)) + geom_point() +geom_boxplot()
+g_bplot2 <- PlantGrowth %>% ggplot(aes(x = group, y = weight, fill = group)) + geom_point() + geom_boxplot()
 g_bplot2
- 
