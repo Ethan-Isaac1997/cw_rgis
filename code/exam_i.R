@@ -15,24 +15,26 @@ mtcars_cyl6 <- mtcars %>% filter(cyl == 6)
 # 2. Filter rows where number of gears (`gear`) is either 3 or 5
 # Use `%in%` to filter the `df_mtcars` dataset for these two `gear` values.
 # Assign to: `mtcars_g35`
-mtcars_gear_3_5 <- mtcars %>% filter(gear == 3, gear == 5)
+mtcars_g35 <- mtcars %>% filter(gear == 3, gear == 5)
 # 3. Filter rows where miles per gallon (`mpg`) is greater than 25
 # Create a subset of `df_mtcars` where `mpg > 25`.
 # Assign to: `mtcars_mpg25`
-mtcars_mpg_gt25 <- mtcars %>% filter(mpg > 25)
+mtcars_mpg25 <- mtcars %>% filter(mpg > 25)
 # 4. Filter rows where weight (`wt`) is less than 2.5 AND number of cylinders (`cyl`) is 4
 # Combine logical conditions using `&`.
 # Assign to: `mtcars_light_cyl4`
+
 mtcars_light_cyl4 <- mtcars %>% filter(wt < 2.5, cyl ==4)
+
 # 5. Sort `df_mtcars` by horsepower (`hp`) in ascending order
 # Use `arrange()` to sort the data.
 # Assign to: `mtcars_hp`
-mtcars_sorted_hp <- mtcars %>% arrange(hp)
+mtcars_hp <- mtcars %>% arrange(hp)
 
 # 6. Sort `df_mtcars` by quarter mile time (`qsec`) in descending order
 # Use `desc()` inside `arrange()`.
 # Assign to: `mtcars_qsec`
-mtcars_sorted_qsec_desc <- mtcars %>% arrange(desc(qsec))
+mtcars_qsec <- mtcars %>% arrange(desc(qsec))
 # 7. Exclude the `drat` column
 # Use `select()` with `-` (minus sign) to remove the column.
 # Assign to: `mtcars_no_drat`
@@ -49,8 +51,8 @@ mtcars_with_ptw <- mtcars %>% mutate(ptw = hp / wt)
 # 9. Identify the car `model` with the highest `ptw` among cars with six cylinders (`cyl == 6`).
 # Hint: Use `mtcars_with_ptw` and a chain of `filter()` and `arrange()` with `%>%`.
 # Write the car model here: YOUR ANSWER
- mtcars_with_ptw %>% filter(cyl == 6) %>% arrange()
-##Mazda RX4
+ mtcars_with_ptw %>% filter(cyl == 6) %>% arrange(ptw)
+##Ferrari Dino
 
 # 10. Group by number of gears (`gear`) and summarize minimum & maximum values of `mpg`
 # Use `group_by()` and `summarize()` to calculate minimum & maximum values of `mpg` within each group.
@@ -59,7 +61,8 @@ mtcars_with_ptw <- mtcars %>% mutate(ptw = hp / wt)
 # Function `max()` returns the maximum value in a vector.
 # Assign to: `mtcars_mpg_by_gear`
  
- mtcars_mean_mpg_by_gear <- mtcars %>% group_by(gear) %>% summarise(avg.mpg = mean(mpg))
+ mtcars_mpg_by_gear <- mtcars %>% group_by(gear) %>% summarise(max.mpg = max(mpg))
+ mtcars_mpg_by_gear
 # ggplot ------------------------------------------------------------------
 
  # Visualization in R (using `iris` dataset)
@@ -81,7 +84,7 @@ g_scat <- ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) 
  # 13. Histogram of `Petal.Width` with `binwidth = 0.5`
  # Assign to: `g_hist`
  # Create a histogram of `Petal.Width` with `binwidth` set to 0.5.
- g_hist <- iris %>% ggplot(aes(x=Sepal.Length, fill=Species)) + geom_histogram(bins = 0.50)
+ g_hist <- iris %>% ggplot(aes(x=Sepal.Length, fill=Species)) + geom_histogram(binwidth = 0.50)
  
  # Visualization in R (using `PlantGrowth` dataset)
  PlantGrowth
