@@ -23,7 +23,7 @@ mapview(sf_site,
 ## export the data
 
 saveRDS(sf_site,
-        file = "data/sf_finsync_nc.rds")
+        file = here::here("data/sf_finsync_nc.rds"))
 ## conversion from geometric data to projected 
 sf_ft_wgs <- sf_site %>% slice(c(1, 2))
 
@@ -66,6 +66,3 @@ st_distance(sf_ft_quakes_proj)
 st_distance(sf_ft_quakes)
 
 saveRDS(sf_quakes, file = here::here("data/sf_quakes.rds"))
-
-
-
