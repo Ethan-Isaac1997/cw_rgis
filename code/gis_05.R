@@ -113,11 +113,6 @@ writeRaster(spr_merge,
 (spr_pt_nc <- c(spr_prec_nc,
                 spr_tmp_nc))
 
-### accessing each layer separately using $precipitation
-
-
-
-
 
 
 # Re projection ------------------------------------------------------------
